@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="theme-color" content="#090016">
+
+    <title>Feliz Cumpleaños Freiman 🎂</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+<!-- =========================================================
+     PANTALLA DE BIENVENIDA
+========================================================= -->
+
+<div id="welcomeScreen" class="welcome-screen">
+
+    <div class="welcome-background"></div>
+
+    <div class="welcome-content">
+
+        <div class="welcome-cake">
+            🎂
+        </div>
+
+        <p class="welcome-small">
+            ✨ UNA PEQUEÑA SORPRESA ✨
+        </p>
+
+        <h1>
+            Hola, <span>Freiman</span>
+        </h1>
+
+        <p class="welcome-description">
+            Tenemos algo especial preparado para ti...
+        </p>
+
+        <button id="startButton" class="start-button">
+            <span>🎁</span>
+            Comenzar sorpresa
+        </button>
+
+        <p class="click-hint">
+            Haz clic para comenzar
+        </p>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     CUENTA REGRESIVA
+========================================================= -->
+
+<div id="countdownScreen" class="countdown-screen hidden">
+
+    <div class="countdown-content">
+
+        <div class="countdown-emoji">
+            🎉
+        </div>
+
+        <p>
+            PREPÁRATE...
+        </p>
+
+        <div id="countdownNumber">
+            3
+        </div>
+
+        <h2>
+            Algo increíble está por comenzar...
+        </h2>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     FONDO
+========================================================= -->
+
+<div class="stars"></div>
+
+<div class="aurora aurora-1"></div>
+<div class="aurora aurora-2"></div>
+
+<div id="particles" class="particles"></div>
+
+<div id="confettiLayer" class="confetti-layer"></div>
+
+
+<!-- =========================================================
+     NAVBAR
+========================================================= -->
+
+<header class="topbar">
+
+    <a href="#inicio" class="brand">
+
+        <span class="brand-cake">
+            🎂
+        </span>
+
+        <span>
+            Feliz Cumpleaños
+        </span>
+
+    </a>
+
+
+    <nav class="nav">
+
+        <a href="#inicio" class="active">
+            🏠
+            <span>Inicio</span>
+        </a>
+
+        <a href="#mensaje">
+            ❤️
+            <span>Mensaje</span>
+        </a>
+
+        <a href="#sorpresas">
+            🎁
+            <span>Sorpresas</span>
+        </a>
+
+        <a href="#recuerdo">
+            📸
+            <span>Recuerdo</span>
+        </a>
+
+    </nav>
+
+
+    <button
+        id="soundBtn"
+        class="icon-button"
+        aria-label="Activar música">
+
+        🔇
+
+    </button>
+
+</header>
+
+
+<!-- =========================================================
+     CONTENIDO PRINCIPAL
+========================================================= -->
+
+<main id="inicio">
+
+
+<!-- =========================================================
+     HERO
+========================================================= -->
+
+<section class="hero">
+
+    <div class="floating-balloon balloon-left">
+        🎈
+    </div>
+
+    <div class="floating-balloon balloon-right">
+        🎈
+    </div>
+
+
+    <!-- PASTEL IZQUIERDO -->
+
+    <div class="side-cake left-cake">
+
+        <div class="cake-stack">
+
+            <div class="cake-layer top-layer">
+
+                <span class="sprinkle s1"></span>
+                <span class="sprinkle s2"></span>
+                <span class="sprinkle s3"></span>
+                <span class="sprinkle s4"></span>
+                <span class="sprinkle s5"></span>
+
+            </div>
+
+            <div class="cake-layer mid-layer"></div>
+
+            <div class="cake-layer bottom-layer"></div>
+
+        </div>
+
+
+        <div class="candles">
+
+            <button class="candle pink"></button>
+
+            <button class="candle blue"></button>
+
+            <button class="candle yellow"></button>
+
+            <button class="candle purple"></button>
+
+        </div>
+
+        <p class="tap-hint">
+            🕯️ ¡Toca las velas!
+        </p>
+
+    </div>
+
+
+    <!-- CONTENIDO CENTRAL -->
+
+    <div class="hero-content">
+
+        <div class="eyebrow">
+            🎉 ¡Hoy es un día especial!
+        </div>
+
+
+        <h1>
+            Feliz Cumpleaños
+        </h1>
+
+
+        <div class="name-wrap">
+
+            <span class="sparkle sparkle-1">
+                ✦
+            </span>
+
+            <h2>
+                Freiman
+            </h2>
+
+            <span class="sparkle sparkle-2">
+                ♥
+            </span>
+
+        </div>
+
+
+        <p class="hero-message">
+
+            Que este nuevo año de vida esté lleno de alegría,
+            amor, salud y muchísimos momentos inolvidables. ✨
+
+        </p>
+
+
+        <button
+            id="giftBtn"
+            class="gift-button">
+
+            <span class="gift-icon">
+                🎁
+            </span>
+
+            <span>
+                ¡Recibe tu regalo!
+            </span>
+
+        </button>
+
+
+        <div class="arrow-note">
+            Haz clic aquí ↗
+        </div>
+
+
+        <!-- DESEOS -->
+
+        <div class="wishes-card">
+
+            <h3>
+                ¡Te deseo lo mejor!
+            </h3>
+
+
+            <div class="wish-grid">
+
+                <button
+                    class="wish"
+                    data-wish="🎂 ¡Que nunca falten motivos para celebrar!">
+
+                    <span>🎂</span>
+
+                    <small>
+                        Felicidad
+                    </small>
+
+                </button>
+
+
+                <button
+                    class="wish"
+                    data-wish="💗 ¡Que siempre estés rodeado de personas que te quieran!">
+
+                    <span>💗</span>
+
+                    <small>
+                        Mucho amor
+                    </small>
+
+                </button>
+
+
+                <button
+                    class="wish"
+                    data-wish="⭐ ¡Que todos tus proyectos encuentren su camino!">
+
+                    <span>⭐</span>
+
+                    <small>
+                        Éxito
+                    </small>
+
+                </button>
+
+
+                <button
+                    class="wish"
+                    data-wish="🎁 ¡Que este nuevo año venga cargado de sorpresas!">
+
+                    <span>🎁</span>
+
+                    <small>
+                        Bendiciones
+                    </small>
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- PASTEL DERECHO -->
+
+    <div class="side-cake right-cake">
+
+        <div class="cake-stack">
+
+            <div class="cake-layer top-layer">
+
+                <span class="sprinkle s1"></span>
+                <span class="sprinkle s2"></span>
+                <span class="sprinkle s3"></span>
+                <span class="sprinkle s4"></span>
+                <span class="sprinkle s5"></span>
+
+            </div>
+
+            <div class="cake-layer mid-layer"></div>
+
+            <div class="cake-layer bottom-layer"></div>
+
+        </div>
+
+
+        <div class="candles">
+
+            <button class="candle pink"></button>
+
+            <button class="candle blue"></button>
+
+            <button class="candle yellow"></button>
+
+            <button class="candle purple"></button>
+
+        </div>
+
+
+        <p class="tap-hint">
+            ✨ ¡Pide un deseo!
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     MENSAJE
+========================================================= -->
+
+<section id="mensaje" class="section">
+
+    <div class="section-heading">
+
+        <span>
+            💌
+        </span>
+
+        <p>
+            Un mensaje especial
+        </p>
+
+        <h2>
+            Para Freiman
+        </h2>
+
+    </div>
+
+
+    <div class="message-card">
+
+        <div class="message-glow"></div>
+
+        <p>
+
+            Hoy no es un día cualquiera.
+
+            Es el día perfecto para celebrar tu vida,
+            tus sueños, tus logros y todas las cosas
+            increíbles que todavía están por venir.
+
+        </p>
+
+
+        <p>
+
+            Que cada nuevo día te regale razones para sonreír,
+            personas que hagan tus momentos especiales
+            y sueños que te den ganas de seguir avanzando.
+
+        </p>
+
+
+        <strong>
+
+            ¡Feliz cumpleaños, Freiman! 🥳🎂
+
+        </strong>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     SORPRESAS
+========================================================= -->
+
+<section id="sorpresas" class="section surprises-section">
+
+    <div class="section-heading">
+
+        <span>
+            🎁
+        </span>
+
+        <p>
+            Pequeñas sorpresas
+        </p>
+
+        <h2>
+            Haz clic y descubre
+        </h2>
+
+    </div>
+
+
+    <div class="surprise-grid">
+
+        <button
+            class="surprise-card"
+            data-surprise="✨ Hoy tienes permiso oficial para disfrutar, reír y celebrar muchísimo.">
+
+            <span>
+                ✨
+            </span>
+
+            <b>
+                Permiso especial
+            </b>
+
+            <small>
+                Haz clic
+            </small>
+
+        </button>
+
+
+        <button
+            class="surprise-card"
+            data-surprise="🚀 Que este nuevo año te acerque a esa versión de ti que sueñas construir.">
+
+            <span>
+                🚀
+            </span>
+
+            <b>
+                Nuevo comienzo
+            </b>
+
+            <small>
+                Haz clic
+            </small>
+
+        </button>
+
+
+        <button
+            class="surprise-card"
+            data-surprise="🍰 Y sí... hoy las calorías del pastel no cuentan. ¡Es cumpleaños!">
+
+            <span>
+                🍰
+            </span>
+
+            <b>
+                Regla del pastel
+            </b>
+
+            <small>
+                Haz clic
+            </small>
+
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     RECUERDO / FOTO / VIDEO
+========================================================= -->
+
+<section id="recuerdo" class="section">
+
+    <div class="section-heading">
+
+        <span>
+            📸
+        </span>
+
+        <p>
+            Un recuerdo especial
+        </p>
+
+        <h2>
+            Para guardar este momento
+        </h2>
+
+    </div>
+
+
+    <div class="memory-card">
+
+        <div class="memory-photo">
+
+            <img
+                id="freimanPhoto"
+                src="media/freiman.jpg"
+                src="media/cerro.jpg"
+                alt="Foto especial de Freiman">
+
+            <div id="photoPlaceholder">
+
+                <span>
+                    📷
+                </span>
+
+                <p>
+                    Coloca tu foto en
+                </p>
+
+                <strong>
+                    media/freiman.jpg
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <div class="memory-text">
+
+            <span>
+                ❤️ UN MOMENTO PARA RECORDAR
+            </span>
+
+            <h3>
+                Los mejores momentos
+                apenas comienzan.
+            </h3>
+
+            <p>
+
+                En familia todo es mejor y hay recuerdos que siempre se conservan.
+
+            </p>
+
+            <button
+                id="showVideoBtn"
+                class="small-button">
+
+                🎬 Ver sorpresa
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- VIDEO OPCIONAL -->
+
+    <div id="videoContainer" class="video-container hidden">
+
+        <div class="video-title">
+
+            🎬
+            Una sorpresa especial
+
+        </div>
+
+
+        <video
+            id="specialVideo"
+            controls
+            playsinline>
+
+            <source
+                src="media/recuerdo.mp4"
+                type="video/mp4">
+
+            Tu navegador no puede reproducir este video.
+
+        </video>
+
+
+        <p>
+            Coloca tu video en
+            <strong>media/recuerdo.mp4</strong>
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     MUSICA
+========================================================= -->
+
+<section class="section music-section">
+
+    <div class="music-panel">
+
+        <div class="music-disc">
+            ♫
+        </div>
+
+
+        <div>
+
+            <span>
+                AMBIENTE DE CUMPLEAÑOS
+            </span>
+
+            <h2>
+                Una pequeña melodía para celebrar
+            </h2>
+
+            <p>
+                Activa el botón de sonido para comenzar.
+            </p>
+
+        </div>
+
+
+        <button
+            id="musicCta"
+            class="small-button">
+
+            🎵 Activar
+
+        </button>
+
+    </div>
+
+</section>
+
+</main>
+
+
+<!-- =========================================================
+     CONTROLES
+========================================================= -->
+
+<div class="bottom-controls">
+
+    <button id="bottomMusic">
+
+        <span>
+            🎵
+        </span>
+
+        <small>
+            Música
+        </small>
+
+        <em id="musicState">
+            OFF
+        </em>
+
+    </button>
+
+
+    <button id="bottomConfetti">
+
+        <span>
+            🎉
+        </span>
+
+        <small>
+            Confeti
+        </small>
+
+        <em>
+            ON
+        </em>
+
+    </button>
+
+</div>
+
+
+<!-- =========================================================
+     MODAL DEL REGALO
+========================================================= -->
+
+<div
+    id="giftModal"
+    class="modal">
+
+    <div
+        class="modal-backdrop"
+        data-close="true">
+    </div>
+
+
+    <div class="modal-card">
+
+        <button
+            class="close-modal"
+            data-close="true">
+
+            ×
+
+        </button>
+
+
+        <div
+            id="giftBox"
+            class="big-gift"
+            tabindex="0">
+
+            <div class="gift-lid"></div>
+
+            <div class="gift-body"></div>
+
+            <div class="gift-ribbon-v"></div>
+
+            <div class="gift-ribbon-h"></div>
+
+            <div class="gift-bow">
+                🎀
+            </div>
+
+        </div>
+
+
+        <p class="modal-kicker">
+            UNA SORPRESA PARA TI
+        </p>
+
+
+        <h2 id="giftTitle">
+            Hay un regalo esperando...
+        </h2>
+
+
+        <p id="giftInstruction">
+            Haz clic sobre la caja para abrirla 🎁
+        </p>
+
+
+        <div
+            id="giftMessage"
+            class="gift-message"
+            hidden>
+
+            <div class="reveal-icon">
+                🥳
+            </div>
+
+            <h3>
+                ¡Sorpresa, Freiman!
+            </h3>
+
+            <p>
+
+                El mejor regalo es desearte un año
+                lleno de momentos que recuerdes
+                con una sonrisa.
+
+                ¡Disfruta muchísimo tu día!
+
+            </p>
+
+
+            <button
+                id="moreConfetti"
+                class="small-button">
+
+                🎉 ¡Más confeti!
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     TOAST
+========================================================= -->
+
+<div
+    id="toast"
+    class="toast">
+
+</div>
+
+
+<footer>
+
+    Hecho con ❤️ para Freiman ·
+    <span id="year"></span>
+
+</footer>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,2534 @@
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    --bg: #090016;
+    --pink: #ff3f9f;
+    --purple: #914fff;
+    --yellow: #ffd85a;
+    --orange: #ff9b3d;
+    --white: #fff8ff;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    overflow-x: hidden;
+
+    color: var(--white);
+
+    font-family: "Poppins", sans-serif;
+
+    background:
+        radial-gradient(
+            circle at 50% 35%,
+            rgba(168, 43, 203, .32),
+            transparent 32rem
+        ),
+        radial-gradient(
+            circle at 15% 75%,
+            rgba(255, 47, 151, .14),
+            transparent 25rem
+        ),
+        linear-gradient(
+            135deg,
+            #070011,
+            #19002f,
+            #090016
+        );
+}
+
+body.modal-open {
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   PANTALLA DE BIENVENIDA
+========================================================= */
+
+.welcome-screen {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 9999;
+
+    display: grid;
+
+    place-items: center;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(166, 42, 221, .35),
+            transparent 35rem
+        ),
+        #07000f;
+
+    transition:
+        opacity 1s ease,
+        visibility 1s ease;
+
+}
+
+.welcome-screen.hide {
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+
+}
+
+
+.welcome-background {
+
+    position: absolute;
+
+    inset: 0;
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.8) 1px,
+            transparent 2px
+        );
+
+    background-size: 75px 75px;
+
+    animation:
+        welcomeStars 20s linear infinite;
+
+}
+
+
+.welcome-content {
+
+    position: relative;
+
+    z-index: 2;
+
+    width: min(700px, 90%);
+
+    text-align: center;
+
+}
+
+
+.welcome-cake {
+
+    font-size: 100px;
+
+    margin-bottom: 10px;
+
+    filter:
+        drop-shadow(
+            0 0 30px
+            rgba(255,80,170,.7)
+        );
+
+    animation:
+        welcomeCake 2s ease-in-out infinite;
+
+}
+
+
+.welcome-small {
+
+    color: #ff82bd;
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+    letter-spacing: 4px;
+
+}
+
+
+.welcome-content h1 {
+
+    margin: 10px 0;
+
+    font-family: "Baloo 2", sans-serif;
+
+    font-size: clamp(55px, 9vw, 105px);
+
+    line-height: .95;
+
+}
+
+
+.welcome-content h1 span {
+
+    display: block;
+
+    color: #ffd86c;
+
+    font-style: italic;
+
+    text-shadow:
+        0 0 10px white,
+        0 0 30px #ff9d31,
+        0 0 60px #ff5c9d;
+
+}
+
+
+.welcome-description {
+
+    color: #ddd0e1;
+
+    font-size: 18px;
+
+    margin: 25px 0;
+}
+
+
+.start-button {
+
+    border: 2px solid white;
+
+    border-radius: 999px;
+
+    padding: 17px 35px;
+
+    color: white;
+
+    font-size: 19px;
+
+    font-weight: 800;
+
+    background:
+        linear-gradient(
+            110deg,
+            #ff328e,
+            #ff9d35
+        );
+
+    box-shadow:
+        0 0 35px
+        rgba(255,54,160,.65);
+
+    transition: .3s;
+
+}
+
+
+.start-button:hover {
+
+    transform:
+        translateY(-5px)
+        scale(1.04);
+
+    box-shadow:
+        0 0 60px
+        rgba(255,54,160,.9);
+
+}
+
+
+.click-hint {
+
+    color: #9e8da4;
+
+    font-size: 12px;
+
+    margin-top: 15px;
+
+}
+
+
+/* =========================================================
+   CUENTA REGRESIVA
+========================================================= */
+
+.countdown-screen {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 9000;
+
+    display: grid;
+
+    place-items: center;
+
+    background: #080011;
+
+    transition: opacity .5s;
+
+}
+
+
+.countdown-screen.hidden {
+
+    display: none;
+
+}
+
+
+.countdown-content {
+
+    text-align: center;
+
+}
+
+
+.countdown-emoji {
+
+    font-size: 65px;
+
+}
+
+
+.countdown-content p {
+
+    color: #ff7bb8;
+
+    letter-spacing: 5px;
+
+    font-weight: 800;
+
+}
+
+
+#countdownNumber {
+
+    font-family: "Baloo 2", sans-serif;
+
+    font-size: clamp(130px, 25vw, 280px);
+
+    line-height: .8;
+
+    color: #fff;
+
+    text-shadow:
+        0 0 20px #ff58ac,
+        0 0 70px #ff58ac;
+
+    animation:
+        countdownPop .9s ease;
+
+}
+
+
+.countdown-content h2 {
+
+    color: #d8c8dd;
+
+    font-weight: 400;
+
+}
+
+
+/* =========================================================
+   FONDO
+========================================================= */
+
+.stars,
+.particles,
+.aurora,
+.confetti-layer {
+
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+}
+
+
+.stars {
+
+    z-index: 0;
+
+    opacity: .7;
+
+    background-image:
+        radial-gradient(
+            circle,
+            white 0 1px,
+            transparent 1.5px
+        );
+
+    background-size: 90px 90px;
+
+    animation:
+        starsMove 25s linear infinite;
+
+}
+
+
+.aurora {
+
+    z-index: 0;
+
+    border-radius: 50%;
+
+    filter: blur(80px);
+
+    opacity: .2;
+
+}
+
+
+.aurora-1 {
+
+    width: 35vw;
+
+    height: 35vw;
+
+    left: -10vw;
+
+    top: 30vh;
+
+    background: #d523a5;
+
+}
+
+
+.aurora-2 {
+
+    width: 30vw;
+
+    height: 30vw;
+
+    right: -8vw;
+
+    top: 10vh;
+
+    background: #683cff;
+
+}
+
+
+.particle {
+
+    position: absolute;
+
+    width: 3px;
+
+    height: 3px;
+
+    border-radius: 50%;
+
+    background: white;
+
+    opacity: .6;
+
+}
+
+
+/* =========================================================
+   NAVBAR
+========================================================= */
+
+.topbar {
+
+    height: 74px;
+
+    position: sticky;
+
+    top: 0;
+
+    z-index: 50;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 0 3vw;
+
+    background:
+        rgba(8,0,20,.7);
+
+    border-bottom:
+        1px solid
+        rgba(255,255,255,.09);
+
+    backdrop-filter:
+        blur(18px);
+
+}
+
+
+.brand {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    font-size: 20px;
+
+    font-weight: 800;
+
+}
+
+
+.brand-cake {
+
+    font-size: 28px;
+
+}
+
+
+.nav {
+
+    display: flex;
+
+    gap: 5px;
+
+}
+
+
+.nav a {
+
+    padding: 25px 15px;
+
+    color: #eee;
+
+    font-weight: 600;
+
+}
+
+
+.nav a:hover {
+
+    color: #ff70b5;
+
+}
+
+
+.icon-button {
+
+    width: 46px;
+
+    height: 46px;
+
+    border:
+        1px solid
+        rgba(255,70,170,.7);
+
+    border-radius: 50%;
+
+    color: white;
+
+    background:
+        rgba(30,3,50,.7);
+
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero {
+
+    min-height:
+        calc(100vh - 74px);
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 70px 4vw 90px;
+
+}
+
+
+.hero-content {
+
+    width: min(730px, 100%);
+
+    text-align: center;
+
+    position: relative;
+
+    z-index: 5;
+
+}
+
+
+.eyebrow {
+
+    font-size: 20px;
+
+}
+
+
+.hero h1 {
+
+    margin: 0;
+
+    font-family:
+        "Baloo 2",
+        sans-serif;
+
+    font-size:
+        clamp(55px,7vw,105px);
+
+    line-height: .95;
+
+    background:
+        linear-gradient(
+            white,
+            #ffeafa,
+            #ffbddd
+        );
+
+    -webkit-background-clip: text;
+
+    color: transparent;
+
+    text-shadow:
+        0 0 30px
+        rgba(255,70,170,.4);
+
+}
+
+
+.name-wrap {
+
+    position: relative;
+
+    width: fit-content;
+
+    margin: auto;
+
+}
+
+
+.name-wrap h2 {
+
+    margin: 0;
+
+    font-family:
+        "Baloo 2",
+        sans-serif;
+
+    font-size:
+        clamp(75px,9vw,145px);
+
+    line-height: .95;
+
+    font-style: italic;
+
+    color: #fff0ae;
+
+    text-shadow:
+        0 0 10px white,
+        0 0 30px #ffae39,
+        0 0 60px #ff722f;
+
+    animation:
+        nameGlow 3s infinite;
+
+}
+
+
+.sparkle {
+
+    position: absolute;
+
+    font-size: 30px;
+
+    animation:
+        sparkle 1.7s infinite;
+
+}
+
+
+.sparkle-1 {
+
+    left: -50px;
+
+    top: 20px;
+
+}
+
+
+.sparkle-2 {
+
+    right: -40px;
+
+    top: 10px;
+
+    color: #ffd85a;
+
+}
+
+
+.hero-message {
+
+    color: #eee2f0;
+
+    line-height: 1.8;
+
+    font-size: 17px;
+
+}
+
+
+.gift-button {
+
+    position: relative;
+
+    overflow: hidden;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 14px;
+
+    min-width: min(460px,90vw);
+
+    padding: 18px 30px;
+
+    border: 2px solid white;
+
+    border-radius: 999px;
+
+    color: white;
+
+    font-size: 24px;
+
+    font-weight: 800;
+
+    background:
+        linear-gradient(
+            110deg,
+            #ff328e,
+            #ff9d35
+        );
+
+    box-shadow:
+        0 0 35px
+        rgba(255,50,160,.7);
+
+    transition: .3s;
+
+}
+
+
+.gift-button:hover {
+
+    transform:
+        translateY(-4px)
+        scale(1.02);
+
+}
+
+
+.gift-icon {
+
+    font-size: 34px;
+
+}
+
+
+.arrow-note {
+
+    color: #ffd56c;
+
+    margin-top: 8px;
+
+}
+
+
+.wishes-card {
+
+    margin: 25px auto 0;
+
+    width: min(650px,95%);
+
+    padding: 18px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.12);
+
+    border-radius: 22px;
+
+    background:
+        rgba(20,3,35,.6);
+
+    backdrop-filter:
+        blur(12px);
+
+}
+
+
+.wishes-card h3 {
+
+    margin: 0 0 12px;
+
+}
+
+
+.wish-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+}
+
+
+.wish {
+
+    border: 0;
+
+    border-right:
+        1px solid
+        rgba(255,255,255,.14);
+
+    background: transparent;
+
+    color: white;
+
+}
+
+
+.wish:last-child {
+
+    border: 0;
+
+}
+
+
+.wish span {
+
+    display: block;
+
+    font-size: 28px;
+
+}
+
+
+/* =========================================================
+   PASTELES
+========================================================= */
+
+.side-cake {
+
+    position: absolute;
+
+    bottom: 30px;
+
+    width: 300px;
+
+    z-index: 3;
+
+}
+
+
+.left-cake {
+
+    left: 1vw;
+
+}
+
+
+.right-cake {
+
+    right: 1vw;
+
+}
+
+
+.cake-stack {
+
+    position: relative;
+
+    height: 220px;
+
+}
+
+
+.cake-layer {
+
+    position: absolute;
+
+    left: 0;
+
+    right: 0;
+
+    border-radius: 20px;
+
+}
+
+
+.bottom-layer {
+
+    bottom: 0;
+
+    height: 110px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #a84d32,
+            #e9824d,
+            #b84d30
+        );
+
+}
+
+
+.mid-layer {
+
+    bottom: 78px;
+
+    height: 95px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #bd5b38,
+            #f09259,
+            #bf5232
+        );
+
+}
+
+
+.top-layer {
+
+    bottom: 145px;
+
+    height: 80px;
+
+    background:
+        linear-gradient(
+            #fff5dd,
+            #ffc8bc
+        );
+
+    border:
+        2px solid
+        rgba(255,255,255,.3);
+
+}
+
+
+.top-layer::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: 5%;
+
+    right: 5%;
+
+    bottom: -22px;
+
+    height: 30px;
+
+    background: #fff0d7;
+
+    border-radius:
+        0 0 40px 40px;
+
+}
+
+
+.sprinkle {
+
+    position: absolute;
+
+    width: 12px;
+
+    height: 4px;
+
+    border-radius: 5px;
+
+    background: #ff579b;
+
+}
+
+
+.s1 {
+
+    left: 20%;
+
+    top: 30%;
+
+}
+
+
+.s2 {
+
+    left: 42%;
+
+    top: 45%;
+
+    background: #ffd247;
+
+}
+
+
+.s3 {
+
+    left: 66%;
+
+    top: 30%;
+
+    background: #5fcbff;
+
+}
+
+
+.s4 {
+
+    left: 78%;
+
+    top: 55%;
+
+    background: #8b58ff;
+
+}
+
+
+.s5 {
+
+    left: 31%;
+
+    top: 66%;
+
+    background: #ff7d3d;
+
+}
+
+
+.candles {
+
+    position: absolute;
+
+    z-index: 5;
+
+    bottom: 212px;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    display: flex;
+
+    gap: 18px;
+
+}
+
+
+.candle {
+
+    position: relative;
+
+    width: 16px;
+
+    height: 58px;
+
+    border: 0;
+
+    border-radius: 4px;
+
+}
+
+
+.candle::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 9px;
+
+    height: 16px;
+
+    left: 50%;
+
+    top: -18px;
+
+    transform: translateX(-50%);
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            white 10%,
+            #ffd52d 30%,
+            #ff7900 60%,
+            transparent 68%
+        );
+
+    filter:
+        drop-shadow(
+            0 0 8px
+            #ffb21b
+        );
+
+    animation:
+        flame .7s infinite alternate;
+
+}
+
+
+.candle.blown::before {
+
+    opacity: 0;
+
+    animation: none;
+
+}
+
+
+.candle.pink {
+
+    background:
+        repeating-linear-gradient(
+            145deg,
+            #ff568f 0 8px,
+            #ffd0dc 8px 13px
+        );
+
+}
+
+
+.candle.blue {
+
+    background:
+        repeating-linear-gradient(
+            145deg,
+            #3ab8f4 0 8px,
+            #d4f2ff 8px 13px
+        );
+
+}
+
+
+.candle.yellow {
+
+    background:
+        repeating-linear-gradient(
+            145deg,
+            #ffb52e 0 8px,
+            #fff0ad 8px 13px
+        );
+
+}
+
+
+.candle.purple {
+
+    background:
+        repeating-linear-gradient(
+            145deg,
+            #914eff 0 8px,
+            #ead8ff 8px 13px
+        );
+
+}
+
+
+.tap-hint {
+
+    text-align: center;
+
+    font-size: 12px;
+
+    background:
+        rgba(20,3,40,.75);
+
+    padding: 8px;
+
+    border-radius: 12px;
+
+}
+
+
+/* =========================================================
+   SECCIONES
+========================================================= */
+
+.section {
+
+    position: relative;
+
+    z-index: 2;
+
+    width: min(1100px,92%);
+
+    margin: auto;
+
+    padding: 100px 0;
+
+}
+
+
+.section-heading {
+
+    text-align: center;
+
+    margin-bottom: 35px;
+
+}
+
+
+.section-heading span {
+
+    font-size: 40px;
+
+}
+
+
+.section-heading p {
+
+    color: #ff82bd;
+
+    text-transform: uppercase;
+
+    letter-spacing: 3px;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+}
+
+
+.section-heading h2 {
+
+    margin: 5px 0;
+
+    font-family:
+        "Baloo 2",
+        sans-serif;
+
+    font-size: clamp(38px,5vw,60px);
+
+}
+
+
+.message-card {
+
+    position: relative;
+
+    overflow: hidden;
+
+    max-width: 820px;
+
+    margin: auto;
+
+    padding: 45px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.15);
+
+    border-radius: 28px;
+
+    background:
+        rgba(30,5,45,.65);
+
+    text-align: center;
+
+    backdrop-filter: blur(12px);
+
+}
+
+
+.message-card p {
+
+    position: relative;
+
+    line-height: 1.9;
+
+    color: #eee2f0;
+
+}
+
+
+.message-card strong {
+
+    position: relative;
+
+    display: block;
+
+    margin-top: 30px;
+
+    color: #ffd76d;
+
+    font-size: 20px;
+
+}
+
+
+.surprise-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap: 20px;
+
+}
+
+
+.surprise-card {
+
+    min-height: 180px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.13);
+
+    border-radius: 24px;
+
+    color: white;
+
+    background:
+        rgba(28,5,45,.65);
+
+    padding: 30px;
+
+    transition: .3s;
+
+}
+
+
+.surprise-card:hover {
+
+    transform:
+        translateY(-8px);
+
+    border-color:
+        rgba(255,90,175,.6);
+
+}
+
+
+.surprise-card span {
+
+    display: block;
+
+    font-size: 45px;
+
+}
+
+
+.surprise-card b {
+
+    display: block;
+
+    margin-top: 10px;
+
+}
+
+
+.surprise-card small {
+
+    color: #bcaabe;
+
+}
+
+
+/* =========================================================
+   FOTO / RECUERDO
+========================================================= */
+
+.memory-card {
+
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap: 35px;
+
+    padding: 30px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.13);
+
+    border-radius: 30px;
+
+    background:
+        rgba(25,4,42,.7);
+
+    backdrop-filter: blur(12px);
+
+}
+
+.memory-card-2 {
+
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap: 35px;
+
+    padding: 30px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.13);
+
+    border-radius: 30px;
+
+    background:
+        rgba(25,4,42,.7);
+
+    backdrop-filter: blur(12px);
+
+}
+
+
+.memory-photo {
+
+    position: relative;
+
+    min-height: 360px;
+
+    overflow: hidden;
+
+    border-radius: 22px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff3e9e,
+            #704bff
+        );
+
+}
+
+
+.memory-photo img {
+
+    width: 100%;
+
+    height: 100%;
+
+    min-height: 360px;
+
+    object-fit: cover;
+
+}
+
+
+
+#photoPlaceholder {
+
+    position: absolute;
+
+    inset: 0;
+
+    display: none;
+
+    place-items: center;
+
+    text-align: center;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,63,159,.8),
+            rgba(99,67,255,.8)
+        );
+
+}
+
+
+#photoPlaceholder span {
+
+    display: block;
+
+    font-size: 70px;
+
+}
+
+
+#photoPlaceholder p {
+
+    margin: 5px;
+
+}
+
+
+#photoPlaceholder strong {
+
+    color: #ffd86b;
+
+}
+
+
+
+.memory-text {
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+}
+
+
+.memory-text > span {
+
+    color: #ff83bd;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    letter-spacing: 2px;
+
+}
+
+
+.memory-text h3 {
+
+    margin: 10px 0;
+
+    font-family:
+        "Baloo 2",
+        sans-serif;
+
+    font-size: 40px;
+
+    line-height: 1.05;
+
+}
+
+
+.memory-text p {
+
+    color: #cdbdd1;
+
+    line-height: 1.8;
+
+}
+
+
+.small-button {
+
+    align-self: flex-start;
+
+    border: 0;
+
+    border-radius: 999px;
+
+    padding: 12px 20px;
+
+    color: white;
+
+    background:
+        linear-gradient(
+            100deg,
+            #ff3b96,
+            #914fff
+        );
+
+    font-weight: 700;
+
+}
+
+
+.video-container {
+
+    margin-top: 30px;
+
+    padding: 25px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.12);
+
+    border-radius: 25px;
+
+    background:
+        rgba(20,3,35,.7);
+
+    text-align: center;
+
+}
+
+
+.video-container.hidden {
+
+    display: none;
+
+}
+
+
+.video-title {
+
+    font-weight: 800;
+
+    margin-bottom: 15px;
+
+}
+
+
+.video-container video {
+
+    width: min(800px,100%);
+
+    max-height: 500px;
+
+    border-radius: 15px;
+
+}
+
+
+.video-container p {
+
+    color: #a997ad;
+
+    font-size: 12px;
+
+}
+
+
+/* =========================================================
+   MUSICA
+========================================================= */
+
+.music-panel {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 25px;
+
+    padding: 25px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.13);
+
+    border-radius: 25px;
+
+    background:
+        rgba(25,4,42,.7);
+
+}
+
+
+.music-disc {
+
+    width: 70px;
+
+    height: 70px;
+
+    display: grid;
+
+    place-items: center;
+
+    border-radius: 50%;
+
+    font-size: 32px;
+
+    background:
+        conic-gradient(
+            #ff4a9f,
+            #7f4dff,
+            #ff9f39,
+            #ff4a9f
+        );
+
+}
+
+
+.music-panel span {
+
+    color: #ff83bd;
+
+    font-size: 11px;
+
+    letter-spacing: 2px;
+
+    font-weight: 800;
+
+}
+
+
+.music-panel h2 {
+
+    margin: 5px 0;
+
+    font-family:
+        "Baloo 2",
+        sans-serif;
+
+}
+
+
+.music-panel p {
+
+    margin: 0;
+
+    color: #aaa;
+
+    font-size: 13px;
+
+}
+
+
+/* =========================================================
+   CONTROLES
+========================================================= */
+
+.bottom-controls {
+
+    position: fixed;
+
+    z-index: 45;
+
+    bottom: 20px;
+
+    left: 20px;
+
+    display: flex;
+
+    gap: 10px;
+
+}
+
+
+.bottom-controls button {
+
+    width: 78px;
+
+    height: 78px;
+
+    border:
+        1px solid
+        rgba(255,75,174,.65);
+
+    border-radius: 50%;
+
+    color: white;
+
+    background:
+        rgba(22,2,39,.8);
+
+    backdrop-filter: blur(12px);
+
+}
+
+
+.bottom-controls span,
+.bottom-controls small,
+.bottom-controls em {
+
+    display: block;
+
+}
+
+
+.bottom-controls span {
+
+    font-size: 22px;
+
+}
+
+
+.bottom-controls small {
+
+    font-size: 10px;
+
+}
+
+
+.bottom-controls em {
+
+    color: #4effa3;
+
+    font-size: 9px;
+
+    font-style: normal;
+
+}
+
+
+/* =========================================================
+   MODAL REGALO
+========================================================= */
+
+.modal {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 100;
+
+    display: none;
+
+    place-items: center;
+
+    padding: 20px;
+
+}
+
+
+.modal.open {
+
+    display: grid;
+
+}
+
+
+.modal-backdrop {
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        rgba(5,0,12,.82);
+
+    backdrop-filter:
+        blur(12px);
+
+}
+
+
+.modal-card {
+
+    position: relative;
+
+    z-index: 2;
+
+    width: min(520px,95vw);
+
+    padding: 35px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.2);
+
+    border-radius: 30px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #27063f,
+            #10001e
+        );
+
+    text-align: center;
+
+}
+
+
+.close-modal {
+
+    position: absolute;
+
+    right: 15px;
+
+    top: 12px;
+
+    width: 38px;
+
+    height: 38px;
+
+    border: 0;
+
+    border-radius: 50%;
+
+    color: white;
+
+    background:
+        rgba(255,255,255,.08);
+
+    font-size: 25px;
+
+}
+
+
+.big-gift {
+
+    position: relative;
+
+    width: 190px;
+
+    height: 150px;
+
+    margin: 20px auto;
+
+}
+
+
+.gift-body {
+
+    position: absolute;
+
+    left: 17px;
+
+    right: 17px;
+
+    bottom: 0;
+
+    height: 110px;
+
+    border-radius: 10px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #e91e75,
+            #ff5ba9,
+            #df1c70
+        );
+
+}
+
+
+.gift-lid {
+
+    position: absolute;
+
+    z-index: 3;
+
+    left: 7px;
+
+    right: 7px;
+
+    top: 25px;
+
+    height: 35px;
+
+    border-radius: 9px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ff4a9b,
+            #ff83bd,
+            #f7358d
+        );
+
+    transform-origin: left;
+
+    transition: .6s;
+
+}
+
+
+.big-gift.opened .gift-lid {
+
+    transform:
+        translate(-25px,-55px)
+        rotate(-24deg);
+
+}
+
+
+.gift-ribbon-v {
+
+    position: absolute;
+
+    z-index: 4;
+
+    left: 50%;
+
+    top: 25px;
+
+    bottom: 0;
+
+    width: 32px;
+
+    transform:
+        translateX(-50%);
+
+    background:
+        #ffd45b;
+
+}
+
+
+.gift-ribbon-h {
+
+    position: absolute;
+
+    z-index: 4;
+
+    left: 7px;
+
+    right: 7px;
+
+    top: 28px;
+
+    height: 25px;
+
+    background:
+        #ffd45b;
+
+}
+
+
+.gift-bow {
+
+    position: absolute;
+
+    z-index: 6;
+
+    top: -10px;
+
+    left: 50%;
+
+    transform:
+        translateX(-50%);
+
+    font-size: 60px;
+
+    transition: .6s;
+
+}
+
+
+.big-gift.opened .gift-bow {
+
+    transform:
+        translate(-50%,-70px)
+        rotate(12deg);
+
+}
+
+
+.gift-message {
+
+    margin-top: 20px;
+
+    padding: 20px;
+
+    border-radius: 20px;
+
+    background:
+        rgba(255,255,255,.05);
+
+    animation:
+        reveal .5s ease;
+
+}
+
+
+.gift-message h3 {
+
+    color: #ffd76c;
+
+    font-family:
+        "Baloo 2",
+        sans-serif;
+
+    font-size: 30px;
+
+}
+
+
+.gift-message p {
+
+    color: #ddd;
+
+    line-height: 1.7;
+
+}
+
+
+/* =========================================================
+   TOAST
+========================================================= */
+
+.toast {
+
+    position: fixed;
+
+    z-index: 200;
+
+    left: 50%;
+
+    bottom: 30px;
+
+    transform:
+        translate(-50%,150px);
+
+    padding: 13px 20px;
+
+    border-radius: 999px;
+
+    background:
+        rgba(20,3,35,.92);
+
+    transition: .4s;
+
+    text-align: center;
+
+}
+
+
+.toast.show {
+
+    transform:
+        translate(-50%,0);
+
+}
+
+
+/* =========================================================
+   CONFETI
+========================================================= */
+
+.confetti-piece {
+
+    position: fixed;
+
+    top: -30px;
+
+    width: 9px;
+
+    height: 15px;
+
+    z-index: 90;
+
+    animation:
+        confettiFall
+        var(--duration)
+        linear
+        forwards;
+
+}
+
+
+@keyframes confettiFall {
+
+    to {
+
+        transform:
+            translate3d(
+                var(--drift),
+                110vh,
+                0
+            )
+            rotate(var(--rotate));
+
+        opacity: 0;
+
+    }
+
+}
+
+
+/* =========================================================
+   ANIMACIONES
+========================================================= */
+
+@keyframes welcomeStars {
+
+    to {
+
+        background-position:
+            150px 100px;
+
+    }
+
+}
+
+
+@keyframes welcomeCake {
+
+    0%,100% {
+
+        transform:
+            translateY(0)
+            rotate(-3deg);
+
+    }
+
+    50% {
+
+        transform:
+            translateY(-15px)
+            rotate(3deg);
+
+    }
+
+}
+
+
+@keyframes countdownPop {
+
+    0% {
+
+        transform:
+            scale(1.5);
+
+        opacity: 0;
+
+    }
+
+    100% {
+
+        transform:
+            scale(1);
+
+        opacity: 1;
+
+    }
+
+}
+
+
+@keyframes starsMove {
+
+    to {
+
+        background-position:
+            150px 100px;
+
+    }
+
+}
+
+
+@keyframes nameGlow {
+
+    0%,100% {
+
+        filter: brightness(1);
+
+    }
+
+    50% {
+
+        filter: brightness(1.15);
+
+    }
+
+}
+
+
+@keyframes sparkle {
+
+    0%,100% {
+
+        transform:
+            scale(.8)
+            rotate(0);
+
+        opacity: .5;
+
+    }
+
+    50% {
+
+        transform:
+            scale(1.3)
+            rotate(20deg);
+
+        opacity: 1;
+
+    }
+
+}
+
+
+@keyframes flame {
+
+    from {
+
+        transform:
+            translateX(-50%)
+            rotate(-5deg)
+            scale(.9);
+
+    }
+
+    to {
+
+        transform:
+            translateX(-50%)
+            rotate(5deg)
+            scale(1.1);
+
+    }
+
+}
+
+
+@keyframes reveal {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(15px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+
+    }
+
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(max-width:1000px) {
+
+    .side-cake {
+
+        width: 210px;
+
+        opacity: .45;
+
+    }
+
+}
+
+
+@media(max-width:700px) {
+
+    .topbar {
+
+        height: 62px;
+
+        padding: 0 12px;
+
+    }
+
+
+    .brand {
+
+        font-size: 14px;
+
+    }
+
+
+    .nav a {
+
+        padding: 20px 5px;
+
+        font-size: 17px;
+
+    }
+
+
+    .nav a span {
+
+        display: none;
+
+    }
+
+
+    .hero {
+
+        padding:
+            60px 15px 90px;
+
+    }
+
+
+    .hero h1 {
+
+        font-size:
+            clamp(
+                45px,
+                13vw,
+                70px
+            );
+
+    }
+
+
+    .name-wrap h2 {
+
+        font-size:
+            clamp(
+                65px,
+                20vw,
+                105px
+            );
+
+    }
+
+
+    .side-cake {
+
+        opacity: .2;
+
+    }
+
+
+    .left-cake {
+
+        left: -100px;
+
+    }
+
+
+    .right-cake {
+
+        right: -100px;
+
+    }
+
+
+    .wish-grid {
+
+        grid-template-columns:
+            repeat(2,1fr);
+
+    }
+
+
+    .surprise-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .memory-card {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .music-panel {
+
+        flex-wrap: wrap;
+
+    }
+
+
+    .music-panel .small-button {
+
+        width: 100%;
+
+    }
+
+
+    .bottom-controls {
+
+        left: 50%;
+
+        transform:
+            translateX(-50%);
+
+    }
+
+}
+
+
+@media(max-width:500px) {
+
+    .welcome-content h1 {
+
+        font-size: 50px;
+
+    }
+
+
+    .welcome-description {
+
+        font-size: 14px;
+
+    }
+
+
+    .start-button {
+
+        font-size: 16px;
+
+    }
+
+
+    .hero-message {
+
+        font-size: 14px;
+
+    }
+
+
+    .gift-button {
+
+        min-width: 95%;
+
+        font-size: 18px;
+
+    }
+
+
+    .message-card {
+
+        padding: 25px 18px;
+
+    }
+
+
+    .memory-card {
+
+        padding: 18px;
+
+    }
+
+
+    .memory-photo {
+
+        min-height: 280px;
+
+    }
+
+
+    .memory-photo img {
+
+        min-height: 280px;
+
+    }
+
+}
