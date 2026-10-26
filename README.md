@@ -1,2 +1,2 @@
 # regalo_primo.github.io
-Regalo de cumpleaños de mi primo freyman
+Página de tarjeta de cumpleaños que fue realizada con HTML, CSS y JavaScript.
